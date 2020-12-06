@@ -13,17 +13,33 @@ repositories {
 }
 
 dependencies {
-    //implementation 'org.springframework.boot:spring-boot-starter-web'
+
     implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'junit:junit:4.12'
+    testImplementation('org.springframework.boot:spring-boot-starter-test'){
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
-    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.4.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.4.0'
+    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+    annotationProcessor "org.projectlombok:lombok:1.18.16"
 }
 
+// https://mvnrepository.com/artifact/org.projectlombok/lombok
 
 
 test {
     useJUnitPlatform()
 }
+
+//sourceSets {
+//    test {
+//        java {
+//            srcDirs = ["test/java"]  // Note @Peter's comment below
+//        }
+//    }
+//}
